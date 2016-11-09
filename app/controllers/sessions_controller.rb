@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController
-include SessionsHelper
 
   def new
   end
@@ -8,8 +7,8 @@ include SessionsHelper
     user = User.find_by_email(sessions_params[:email])
     if user and user.authenticate(sessions_params[:password])
       login user
-      redirect_to root_path
     end
+    redirect_to root_path
   end
 
   def delete
